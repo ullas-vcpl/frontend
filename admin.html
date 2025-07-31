@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="public/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>Admin Panel</h2>
+  <input id="adminPass" type="password" placeholder="Admin password">
+  <button onclick="loadData()">Login</button>
+  <div id="output"></div>
+
+  <script>
+    async function loadData() {
+      try {
+        const res = await axios.post('https://backend-m5fa.onrender.com/admin', {
+          password: document.getElementById('adminPass').value
+        });
+
+        let html = '<ul>';
+        res.data.forEach(entry => {
+          html += `<li>${entry.name} | ${entry.email} | ${entry.contact}</li>`;
+        });
+        html += '</ul>';
+
+        document.getElementById('output').innerHTML = html;
+      } catch (err) {
+        alert("Failed to fetch data: " + err.response?.data || err.message);
+      }
+    }
+  </script>
+</body>
+</html>
