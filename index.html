@@ -17,7 +17,7 @@
   <script>
     async function submitForm() {
       try {
-        const res = await axios.post('http://localhost:5000/submit', {
+        const res = await axios.post('https://backend-m5fa.onrender.com/submit', {
           name: document.getElementById('name').value,
           email: document.getElementById('email').value,
           contact: document.getElementById('contact').value
