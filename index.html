@@ -17,6 +17,8 @@
   <a href="./admin.html">Go to admin</a>
 
   <script>
+    let res= await axios.get('https://backend-m5fa.onrender.com/test');
+    console.log(res.data);
     async function submitForm() {
       try {
         const res = await axios.post('https://backend-m5fa.onrender.com/submit', {
